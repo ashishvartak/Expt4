@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-//Example for explaining Layout using Gridview
+//Example for explaining Layout using ListView
 void main() {
   runApp(MyApp());
 }
@@ -25,20 +25,37 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  Widget _buildGrid() => GridView.extent(
-      maxCrossAxisExtent: 150,
-      padding: const EdgeInsets.all(4),
-      mainAxisSpacing: 4,
-      crossAxisSpacing: 4,
-      children: _buildGridTileList(10));
+  // function returning List view widget
+  Widget _buildList() => ListView(
+        // name is a listTile widget which is defined below
+        children: [
+          name('james', 'thomas'),
+          name('Ajay', 'kumar'),
+          name('Arun', 'das'),
+          name('Roxie', 'St'),
+          name('Stanlee', 'jr'),
+          name('AMC', 'hales'),
+          Divider(),
+          name('Monty', "Chopra"),
+          name('Emmy', 'Ave'),
+          name('Chaitanya', ' kumar'),
+          name('Rio', 'St'),
+        ],
+      );
 
-  List<Container> _buildGridTileList(int count) => List.generate(
-      count,
-      (i) => Container(
-            width: 100,
-            height: 100,
-            color: Colors.blue,
-          ));
+// name is a function returning ListTile widget
+  ListTile name(String firstName, String lastName) => ListTile(
+        title: Text(firstName,
+            style: TextStyle(
+              fontWeight: FontWeight.w500,
+              fontSize: 20,
+            )),
+        subtitle: Text(lastName),
+        leading: Icon(
+          Icons.arrow_back_ios,
+          color: Colors.blue[500],
+        ),
+      );
 
   @override
   Widget build(BuildContext context) {
@@ -46,6 +63,6 @@ class _MyHomePageState extends State<MyHomePage> {
         appBar: AppBar(
           title: Text("IT Department"),
         ),
-        body: Center(child: _buildGrid()));
+        body: Center(child: _buildList()));
   }
 }
