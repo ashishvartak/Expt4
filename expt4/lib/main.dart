@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-//Example for explaining Layout using ListView
+//Example for explaining Layout using Stackview
 void main() {
   runApp(MyApp());
 }
@@ -26,35 +26,28 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   // function returning List view widget
-  Widget _buildList() => ListView(
-        // name is a listTile widget which is defined below
-        children: [
-          name('james', 'thomas'),
-          name('Ajay', 'kumar'),
-          name('Arun', 'das'),
-          name('Roxie', 'St'),
-          name('Stanlee', 'jr'),
-          name('AMC', 'hales'),
-          Divider(),
-          name('Monty', "Chopra"),
-          name('Emmy', 'Ave'),
-          name('Chaitanya', ' kumar'),
-          name('Rio', 'St'),
-        ],
-      );
 
-// name is a function returning ListTile widget
-  ListTile name(String firstName, String lastName) => ListTile(
-        title: Text(firstName,
-            style: TextStyle(
-              fontWeight: FontWeight.w500,
-              fontSize: 20,
-            )),
-        subtitle: Text(lastName),
-        leading: Icon(
-          Icons.arrow_back_ios,
-          color: Colors.blue[500],
-        ),
+// this function returns a stack widget
+  Widget _buildStack() => Stack(
+        alignment: const Alignment(0.6, 0.6),
+        children: [
+          Container(
+            width: 150,
+            height: 150,
+            decoration:
+                BoxDecoration(color: Colors.black45, shape: BoxShape.circle),
+            child: Center(
+              child: Text(
+                'Mia B',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
+                ),
+              ),
+            ),
+          ),
+        ],
       );
 
   @override
@@ -63,6 +56,6 @@ class _MyHomePageState extends State<MyHomePage> {
         appBar: AppBar(
           title: Text("IT Department"),
         ),
-        body: Center(child: _buildList()));
+        body: Center(child: _buildStack()));
   }
 }
